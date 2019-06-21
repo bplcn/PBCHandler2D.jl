@@ -109,46 +109,33 @@ function OuterNodesPicker(NodeDict::Dict,ElemDict::Dict)
     NodeYN = unique([FaceYN[:,3];FaceYN[:,4]]);
 
     # Point
-    NodeA=intersect(intersect(NodeXP,NodeYN),NodeZN);
-    NodeB=intersect(intersect(NodeXP,NodeYP),NodeZN);
-    NodeC=intersect(intersect(NodeXN,NodeYP),NodeZN);
-    NodeD=intersect(intersect(NodeXN,NodeYN),NodeZN);
-   
-
-    # Edge
-    NodeBC=setdiff(intersect(NodeYP,NodeZN),[NodeB;NodeC]);
-    NodeAD=setdiff(intersect(NodeYN,NodeZN),[NodeA;NodeD]);
-    NodeAB=setdiff(intersect(NodeXP,NodeZN),[NodeA;NodeB]);
-    NodeDC=setdiff(intersect(NodeXN,NodeZN),[NodeD;NodeC]);
+    NodeA=intersect(NodeXP,NodeYN);
+    NodeB=intersect(NodeXP,NodeYP);
+    NodeC=intersect(NodeXN,NodeYP);
+    NodeD=intersect(NodeXN,NodeYN);
 
     # Surface
-    NodeX0=setdiff(NodeXN,[NodeC;NodeD;NodeH;NodeG;NodeDC;NodeHG;NodeHD;NodeGC]);
-    NodeX1=setdiff(NodeXP,[NodeA;NodeB;NodeE;NodeF;NodeAB;NodeFB;NodeEF;NodeEA]);
+    NodeX0=setdiff(NodeXN,[NodeC;NodeD]);
+    NodeX1=setdiff(NodeXP,[NodeA;NodeB]);
 
-    NodeY0=setdiff(NodeYN,[NodeA;NodeE;NodeH;NodeD;NodeEA;NodeHE;NodeHD;NodeAD]);
-    NodeY1=setdiff(NodeYP,[NodeB;NodeF;NodeG;NodeC;NodeFB;NodeGF;NodeGC;NodeBC]);
-
+    NodeY0=setdiff(NodeYN,[NodeA;NodeD]);
+    NodeY1=setdiff(NodeYP,[NodeB;NodeC]);
 
     OutNodeDict = Dict();
     OutNodeDict["NodeA"] = NodeA[1];
     OutNodeDict["NodeB"] = NodeB[1];
     OutNodeDict["NodeC"] = NodeC[1];
     OutNodeDict["NodeD"] = NodeD[1];
-
-    OutNodeDict["NodeBC"] = sortlinenodes(NodeInfor,NodeBC,:x);
-    OutNodeDict["NodeAD"] = sortlinenodes(NodeInfor,NodeAD,:x);
-    OutNodeDict["NodeAB"] = sortlinenodes(NodeInfor,NodeAB,:y);
-    OutNodeDict["NodeDC"] = sortlinenodes(NodeInfor,NodeDC,:y);
     
     OutNodeDict["NodeXP"] = NodeXP;
     OutNodeDict["NodeXN"] = NodeXN;
     OutNodeDict["NodeYP"] = NodeYP;
     OutNodeDict["NodeYN"] = NodeYN;
 
-    OutNodeDict["NodeX0"] = NodeX0;
-    OutNodeDict["NodeX1"] = NodeX1;
-    OutNodeDict["NodeY0"] = NodeY0;
-    OutNodeDict["NodeY1"] = NodeY1;
+    OutNodeDict["NodeX0"] = sortlinenodes(NodeDict,NodeX0,:y);
+    OutNodeDict["NodeX1"] = sortlinenodes(NodeDict,NodeX1,:y);
+    OutNodeDict["NodeY0"] = sortlinenodes(NodeDict,NodeY0,:x);
+    OutNodeDict["NodeY1"] = sortlinenodes(NodeDict,NodeY1,:x);;
     
     return OutNodeDict,OutFaceDict
 end
