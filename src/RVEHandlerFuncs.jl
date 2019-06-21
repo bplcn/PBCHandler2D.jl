@@ -103,10 +103,10 @@ function OuterNodesPicker(NodeDict::Dict,ElemDict::Dict)
     OutFaceDict["FaceYP"] = FaceYP;
     OutFaceDict["FaceYN"] = FaceYN;
 
-    NodeXP = unique([FaceXP[:,3];FaceXP[:,4];FaceXP[:,5]]);
-    NodeXN = unique([FaceXN[:,3];FaceXN[:,4];FaceXN[:,5]]);
-    NodeYP = unique([FaceYP[:,3];FaceYP[:,4];FaceYP[:,5]]);
-    NodeYN = unique([FaceYN[:,3];FaceYN[:,4];FaceYN[:,5]]);
+    NodeXP = unique([FaceXP[:,3];FaceXP[:,4]]);
+    NodeXN = unique([FaceXN[:,3];FaceXN[:,4]]);
+    NodeYP = unique([FaceYP[:,3];FaceYP[:,4]]);
+    NodeYN = unique([FaceYN[:,3];FaceYN[:,4]]);
 
     # Point
     NodeA=intersect(intersect(NodeXP,NodeYN),NodeZN);
