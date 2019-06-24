@@ -6,10 +6,11 @@ function PBCsetScaleField(NodeInfor,ElemInfor,OutNodeDict,OutFaceDict;dof=11)
     NodeC = OutNodeDict["NodeC"];
     NodeD = OutNodeDict["NodeD"];
 
-    NodeBC = OutNodeDict["NodeBC"];
-    NodeAD = OutNodeDict["NodeAD"];
-    NodeAB = OutNodeDict["NodeAB"];
-    NodeDC = OutNodeDict["NodeDC"];
+    NodeBC = OutNodeDict["NodeY1"];
+    NodeAD = OutNodeDict["NodeY0"];
+    NodeAB = OutNodeDict["NodeX1"];
+    NodeDC = OutNodeDict["NodeX0"];
+
 
     if (length(NodeAB)!=length(NodeDC))||(length(NodeAD)!=length(NodeBC))
         error("The nodes mismatch!");
