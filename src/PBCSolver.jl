@@ -126,7 +126,7 @@ function PBCsetDisp(NodeInfor,ElemInfor,OutNodeDict,OutFaceDict)
         
     @inbounds @simd for knode = 1:length(NodeAB)
         # #
-        considnow = edgesXbegin+(knode-1)+1;
+        considnow = edgesXbegin+2*(knode-1)+1;
         ConstrainNodeIDArray[considnow]=[NodeAB[knode],NodeDC[knode],NodeA];
         ConstrainNodePrArray[considnow]=[1.0,-1.0,-1.0];
         ConstrainNodeDFArray[considnow]=[1,1,1];
@@ -141,12 +141,12 @@ function PBCsetDisp(NodeInfor,ElemInfor,OutNodeDict,OutFaceDict)
     # Y face
     @inbounds @simd for knode = 1:length(NodeBC)
         # #
-        considnow = edgesYbegin+(knode-1)+1;
+        considnow = edgesYbegin+2*(knode-1)+1;
         ConstrainNodeIDArray[considnow]=[NodeBC[knode],NodeAD[knode],NodeC];
         ConstrainNodePrArray[considnow]=[1.0,-1.0,-1.0];
         ConstrainNodeDFArray[considnow]=[1,1,1];
 
-        considnow = considnow+1;
+        considnow += 1;
         ConstrainNodeIDArray[considnow]=[NodeBC[knode],NodeAD[knode],NodeC];
         ConstrainNodePrArray[considnow]=[1.0,-1.0,-1.0];
         ConstrainNodeDFArray[considnow]=[2,2,2];
