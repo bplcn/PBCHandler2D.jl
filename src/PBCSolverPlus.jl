@@ -136,7 +136,7 @@ function PBCsetDispPlus(NodeInfor,ElemInfor,OutNodeDict,OutFaceDict)
 
 end
 
-function PBCsetScaleField(NodeInfor,ElemInfor,OutNodeDict,OutFaceDict;dof=11)
+function PBCsetScaleFieldPlus(NodeInfor,ElemInfor,OutNodeDict,OutFaceDict;dof=11)
     `Set the periodic boundary conditions for displacement.`
 
     NodeA = OutNodeDict["NodeA"];
@@ -148,11 +148,6 @@ function PBCsetScaleField(NodeInfor,ElemInfor,OutNodeDict,OutFaceDict;dof=11)
     NodeAD = OutNodeDict["NodeY0"];
     NodeAB = OutNodeDict["NodeX1"];
     NodeDC = OutNodeDict["NodeX0"];
-
-
-    if (length(NodeAB)!=length(NodeDC))||(length(NodeAD)!=length(NodeBC))
-        error("The nodes mismatch!");
-    end
 
     pointconsnum = 3;
     edgesXnum = length(NodeAB)*1;
