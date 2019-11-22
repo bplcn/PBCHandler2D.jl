@@ -126,7 +126,7 @@ function PBCsetDispPlus(NodeInfor,ElemInfor,OutNodeDict,OutFaceDict)
 
             considnow += 1;
             ConstrainNodeIDArray[considnow]=[NodeBC[knode],mapnodeArray[knode][1],mapnodeArray[knode][2],NodeC];
-            ConstrainNodePrArray[considnow]=[1.0,-mapweightArray[knode][1],-mapweightArray[knode][2]],-1.0;
+            ConstrainNodePrArray[considnow]=[1.0,-mapweightArray[knode][1],-mapweightArray[knode][2],-1.0];
             ConstrainNodeDFArray[considnow]=[2,2,2,2];
         end
 
