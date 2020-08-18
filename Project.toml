@@ -1,0 +1,7 @@
+name = "PBCHandler2D"
+uuid = "acb561f5-f97e-4a81-845f-7fe2b6e46703"
+authors = ["BIAN, Peiliang <47040923+bplcn@users.noreply.github.com>"]
+version = "0.1.0"
+
+[deps]
+LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
